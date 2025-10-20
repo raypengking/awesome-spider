@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenWave AI · 开放式播客</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <div class="brand">OpenWave AI</div>
+        <nav class="menu" aria-label="主要导航">
+          <a href="#episodes">最新节目</a>
+          <a href="#trending">热门话题</a>
+          <a href="#formats">节目形式</a>
+          <a href="#subscribe">订阅</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__content">
+          <div class="hero__text">
+            <p class="hero__badge">开放式 AI 播客</p>
+            <h1>捕捉最新的人工智能趋势与洞察</h1>
+            <p>
+              每周三次更新，覆盖大模型、产业应用、研究突破与伦理讨论。
+              所有节目均可自由收听或二次创作，欢迎加入社区共建。
+            </p>
+            <div class="hero__actions">
+              <button class="btn btn--primary" id="play-latest" type="button">
+                ▶ 立即播放最新一期
+              </button>
+              <a class="btn btn--secondary" href="#newsletter">订阅每周摘要</a>
+            </div>
+            <div class="hero__meta" id="latest-meta" aria-live="polite"></div>
+          </div>
+          <div class="hero__image" role="presentation">
+            <div class="wave"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="episodes">
+        <div class="container">
+          <header class="section__header">
+            <div>
+              <p class="section__eyebrow">Latest Drops</p>
+              <h2>最新节目</h2>
+            </div>
+            <div class="filter">
+              <label class="filter__label" for="topic-filter"
+                >按话题筛选：</label
+              >
+              <select id="topic-filter" aria-label="节目主题筛选">
+                <option value="all">全部</option>
+              </select>
+            </div>
+          </header>
+
+          <div class="episodes" role="list" id="episode-list"></div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="trending">
+        <div class="container">
+          <header class="section__header">
+            <div>
+              <p class="section__eyebrow">Trending Topics</p>
+              <h2>热门话题</h2>
+            </div>
+          </header>
+
+          <div class="trending" id="trending-topics"></div>
+        </div>
+      </section>
+
+      <section class="section" id="formats">
+        <div class="container">
+          <header class="section__header">
+            <div>
+              <p class="section__eyebrow">Show Formats</p>
+              <h2>节目形式</h2>
+            </div>
+          </header>
+
+          <div class="formats">
+            <article class="format">
+              <h3>Frontier Weekly</h3>
+              <p>30 分钟精华回顾，涵盖过去一周最重要的 AI 新闻与分析。</p>
+            </article>
+            <article class="format">
+              <h3>Builders Talk</h3>
+              <p>与创业者和工程师深聊产品落地经验、技术选型与团队管理。</p>
+            </article>
+            <article class="format">
+              <h3>Research Decode</h3>
+              <p>邀请学者拆解最新论文，从理论、实验到开放数据集全面解析。</p>
+            </article>
+            <article class="format">
+              <h3>Ethics & Society</h3>
+              <p>探讨 AI 对社会的影响，关注公平性、监管与可持续发展的议题。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="subscribe">
+        <div class="container">
+          <div class="subscribe">
+            <div class="subscribe__info">
+              <p class="section__eyebrow">Open Distribution</p>
+              <h2>开放收听，平台随心</h2>
+              <p>
+                我们的节目支持 RSS、Spotify、Apple Podcasts、喜马拉雅等平台。
+                也可在下方订阅邮件，获取可下载的开放授权音频与文稿。
+              </p>
+              <ul class="subscribe__links">
+                <li><a href="#">RSS Feed</a></li>
+                <li><a href="#">Spotify</a></li>
+                <li><a href="#">Apple Podcasts</a></li>
+                <li><a href="#">小宇宙</a></li>
+              </ul>
+            </div>
+            <form class="subscribe__form" id="newsletter">
+              <label for="email">订阅每周摘要</label>
+              <div class="input-group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="输入邮箱"
+                  required
+                />
+                <button class="btn btn--primary" type="submit">订阅</button>
+              </div>
+              <p class="subscribe__hint" id="subscribe-hint">
+                我们将向你发送近期重点内容与开放授权链接。
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__layout">
+        <div>
+          <div class="brand">OpenWave AI</div>
+          <p class="footer__desc">
+            由开源社区驱动的开放式播客，所有内容基于 CC BY-SA 4.0
+            授权，欢迎再创作。
+          </p>
+        </div>
+        <div class="footer__links">
+          <a href="#">社区论坛</a>
+          <a href="#">节目指南</a>
+          <a href="#">开放数据集</a>
+          <a href="#">合作联系</a>
+        </div>
+        <p class="footer__meta">
+          © <span id="year"></span> OpenWave Cooperative
+        </p>
+      </div>
+    </footer>
+
+    <template id="episode-template">
+      <article class="episode" role="listitem">
+        <div class="episode__meta">
+          <span class="episode__tag"></span>
+          <time class="episode__date"></time>
+        </div>
+        <h3 class="episode__title"></h3>
+        <p class="episode__desc"></p>
+        <audio controls preload="none" class="episode__player"></audio>
+        <div class="episode__actions">
+          <a class="episode__link episode__link--primary" href="#">节目页</a>
+          <a class="episode__link" href="#">文字稿</a>
+          <button class="episode__save" type="button" aria-pressed="false">
+            ☆ 加入稍后播放
+          </button>
+        </div>
+      </article>
+    </template>
+
+    <template id="topic-template">
+      <article class="topic">
+        <h3></h3>
+        <p></p>
+        <span class="topic__count"></span>
+      </article>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
