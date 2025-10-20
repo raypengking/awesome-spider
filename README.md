@@ -3,6 +3,19 @@
 --------------------------
 <a href="https://brightdata.grsm.io/zhangchaoran5322"><img src="https://user-images.githubusercontent.com/4927218/119819524-08f58200-bf23-11eb-93f5-771924a3fb83.png"></a>
 
+
+## OpenWave AI 播客平台
+
+该仓库的 `web/` 目录存放 OpenWave AI 播客的静态站点资源。项目配置了 GitHub Pages 自动化部署工作流，每次推送到 `work` 分支或手动触发工作流时都会重新发布，流程会：
+
+1. 检出仓库代码并配置 Pages 环境。
+2. 将 `web/` 目录作为站点产物上传。
+3. 部署到 `github-pages` 环境并输出访问链接。
+
+> **发布前检查**：可执行 `npx prettier --check "web/**/*.{js,css,html}"` 以确保代码风格一致。
+
+部署成功后，即可在 GitHub Pages 配置的自定义域名或默认域名下访问最新的播客内容。
+
 [Brigtdata，旧名Luminati](https://brightdata.grsm.io/zhangchaoran5322) 目前海外最牛的代理 IP 提供商，代理抓取成功率 99%。 现在在搞优惠活动，需要高质量稳定代理的可以考虑一下，客户使用任何套餐都送 150-250 美金. 点击链接注册后根据邮件联系中文客服。
 
 ----------------------------
