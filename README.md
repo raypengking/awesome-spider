@@ -3,6 +3,41 @@
 --------------------------
 <a href="https://brightdata.grsm.io/zhangchaoran5322"><img src="https://user-images.githubusercontent.com/4927218/119819524-08f58200-bf23-11eb-93f5-771924a3fb83.png"></a>
 
+
+## Survival English Coach 面板
+
+`web/` 目录现在提供「一个月生存英语教练」的日常任务面板，支持接入排课/打分接口并离线 fallback 展示示例数据。页面默认展示：
+
+* 今日目标、词块、句型、替换练习、跟读录音指引、测验、作业及鼓励语等九大区块，严格遵循教学输出格式。
+* 今日任务清单可勾选完成，若任务需要口语评分会提示先填写分数并调用 `{SCHEDULE_TASK_UPDATE_ENDPOINT}`。
+* 支持触发 `{SCHEDULE_INIT_ENDPOINT}` 重新生成 30 天学习计划，以及 `{SCHEDULE_NOTIFY_ENDPOINT}` 发送 20:30 学习提醒。
+* 内置周/月进度统计（含 streak、平均分、弱项音素 Top2、下周重点）与「挑战对话」徽章逻辑。
+* 浏览器端录音（MediaRecorder）用于 20 秒跟读自检，可回放并重新录制。
+
+### 本地预览与部署
+
+1. 在仓库根目录执行任意静态服务器（如 `npx serve web`）即可预览。
+2. 发布前运行 `npx prettier --check "web/**/*.{js,css,html}"` 确认代码风格。
+3. GitHub Actions Pages workflow 会将 `web/` 目录发布到 `github-pages` 环境，推送到 `work` 分支或手动触发即可重新部署。
+
+### 接口配置
+
+`index.html` 底部的 `<script id="coach-config">` 以 JSON 形式定义用户与接口地址，示例：
+
+```json
+{
+  "userId": "learner-001",
+  "scheduleTodayEndpoint": "https://api.example.com/schedule/today",
+  "scheduleTaskUpdateEndpoint": "https://api.example.com/schedule/tasks/{task_id}",
+  "scheduleNotifyEndpoint": "https://api.example.com/schedule/notify",
+  "scheduleInitEndpoint": "https://api.example.com/schedule/init"
+}
+```
+
+* `scheduleTaskUpdateEndpoint` 会自动将 `{task_id}` 占位符替换为真实任务 ID。
+* 未配置接口时，页面会启用离线示例数据（含得分 87 的口语任务）。
+* 客户端本地存储会缓存周完成度、口语得分历史与弱项音素，便于生成个性化鼓励和徽章状态。
+
 [Brigtdata，旧名Luminati](https://brightdata.grsm.io/zhangchaoran5322) 目前海外最牛的代理 IP 提供商，代理抓取成功率 99%。 现在在搞优惠活动，需要高质量稳定代理的可以考虑一下，客户使用任何套餐都送 150-250 美金. 点击链接注册后根据邮件联系中文客服。
 
 ----------------------------

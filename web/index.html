@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Survival English Coach · 今日任务面板</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app" aria-live="polite">
+      <header class="page-header">
+        <div class="header__text">
+          <h1 class="page-title">Survival English Coach</h1>
+          <p class="page-subtitle">30 天生存口语计划 · 每日任务一站式查看</p>
+        </div>
+        <div class="header__meta">
+          <p id="today-date" class="header__date"></p>
+          <div class="header__streak" id="header-streak"></div>
+          <button
+            type="button"
+            class="btn btn--ghost header__init"
+            id="init-plan"
+          >
+            重新生成 30 天计划
+          </button>
+        </div>
+      </header>
+
+      <main class="main-grid">
+        <section class="card" id="goal-card">
+          <h2 id="goal-heading">📌 今日目标：</h2>
+          <p id="goal-text" class="card__lead"></p>
+        </section>
+
+        <section class="card" id="word-card">
+          <h2>🔤 词块速记</h2>
+          <ul class="word-list" id="word-list" aria-live="polite"></ul>
+        </section>
+
+        <section class="card" id="sentence-card">
+          <h2>🧩 句型模板</h2>
+          <ol class="sentence-list" id="sentence-list"></ol>
+        </section>
+
+        <section class="card card--wide" id="practice-card">
+          <h2>🎯 替换练习</h2>
+          <div class="practice-grid">
+            <div>
+              <h3>替换表</h3>
+              <table class="substitution-table" id="substitution-table"></table>
+            </div>
+            <div>
+              <h3>情景对话填空</h3>
+              <div class="dialogue" id="dialogue"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="shadowing-card">
+          <h2>🗣 跟读指引</h2>
+          <div class="shadowing" id="shadowing"></div>
+          <div class="recording" id="recording-controls">
+            <button type="button" class="btn" id="record-start">
+              开始录音
+            </button>
+            <button
+              type="button"
+              class="btn btn--ghost"
+              id="record-stop"
+              disabled
+            >
+              停止
+            </button>
+            <audio id="recording-playback" controls hidden></audio>
+            <button
+              type="button"
+              class="btn btn--secondary"
+              id="record-reset"
+              hidden
+            >
+              重新录音
+            </button>
+          </div>
+          <p class="recording__hint" id="recording-hint"></p>
+        </section>
+
+        <section class="card" id="score-card">
+          <h2>📈 打分与改进</h2>
+          <div id="score-summary"></div>
+        </section>
+
+        <section class="card" id="quiz-card">
+          <h2>📝 测验</h2>
+          <ol class="quiz-list" id="quiz-list"></ol>
+        </section>
+
+        <section class="card card--wide" id="schedule-card">
+          <h2>🗓 今日任务清单</h2>
+          <p class="card__lead" id="schedule-lead"></p>
+          <ul class="task-list" id="task-list"></ul>
+          <form class="notify" id="notify-form">
+            <label for="notify-channel">需要提醒？</label>
+            <div class="notify__controls">
+              <select id="notify-channel" name="channel">
+                <option value="webpush">Web Push</option>
+                <option value="email">电子邮件</option>
+                <option value="sms">短信</option>
+              </select>
+              <button type="submit" class="btn btn--ghost">
+                发送 20:30 提醒
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card" id="progress-card">
+          <h2>📊 学习进度</h2>
+          <dl class="progress" id="progress"></dl>
+        </section>
+
+        <section class="card" id="homework-card">
+          <h2>📚 作业巩固</h2>
+          <ul class="homework-list" id="homework-list"></ul>
+        </section>
+
+        <section class="card" id="encouragement-card">
+          <h2>🌟 鼓励与下一步</h2>
+          <p id="encouragement-text"></p>
+        </section>
+      </main>
+
+      <div
+        id="status-region"
+        class="status"
+        role="status"
+        aria-live="assertive"
+      ></div>
+    </div>
+
+    <script id="coach-config" type="application/json">
+      {
+        "userId": "learner-demo",
+        "scheduleTodayEndpoint": "",
+        "scheduleTaskUpdateEndpoint": "",
+        "scheduleNotifyEndpoint": "",
+        "scheduleInitEndpoint": ""
+      }
+    </script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
